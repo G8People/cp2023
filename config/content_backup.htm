@@ -625,7 +625,24 @@ int main() {
 <p>儲存到<span>tinyc-data-home<span> </span></span>名稱:學號</p>
 <p>將鑰匙儲存在自己的USB當中</p>
 <h1>ANSIC</h1>
-<h1>Brython</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main(int argc, char** argv) {
+    // Check for C standard version
+    #if __STDC_VERSION__ &gt;=  201710L
+        printf("We are using C18!\n");
+    #elif __STDC_VERSION__ &gt;= 201112L
+        printf("We are using C11!\n");
+    #elif __STDC_VERSION__ &gt;= 199901L
+        printf("We are using C99!\n");
+    #else
+        printf("We are using C89/C90!\n");
+    #endif
+
+    // Indicate successful execution
+    return 0;
+}</pre>
+<p></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
