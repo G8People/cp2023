@@ -1,8 +1,20 @@
 <h1>About</h1>
 <p><a href="https://github.com/mdecycu/cmsite"> https://github.com/mdecycu/cmsite</a></p>
 <h1>作業區</h1>
-<h2>w1-w5</h2>
-<h2>w5</h2>
+<h2>w1-w4</h2>
+<p><strong>建立帳號與網站</strong></p>
+<p>利用已經帶有 Brython 執行環境的倉儲, 在設定學員 Github Classroom 首次作業時, 即經由 template 置入, 因此學員只要:</p>
+<p>利用學校 email 帳號, 建立 Github 帳號, 以英文姓名縮寫加上一組數字, 選擇最短帳號名稱 例如: jfk40723199, jfk 為其自選的姓名縮寫, 而隨後則加上各自的學號.</p>
+<p>擁有 Github 帳號後, 即可透過 Github Classroom assignment 連結取得作業倉儲, 自行在倉儲中設定 Github Pages 後, 即可啟用作業網站 (以下<span> </span><span>所謂<span>網站均指靜態網站</span><span> </span></span>, 而用來編輯網站內容的<span>動態網站, 則統稱為網際內容編輯器</span>, 使用動態網站的目的在編輯靜態網站的內容). 網站內容經過編輯之後, 必須建立新的網站內容 (使用 generate_pages), 然後將新的網站內容更新到對應的 Github 倉儲中 (稱為改版, 其過程經歷 git add, git commit 與 git push 等階段).</p>
+<p>git 為分散式版次管理系統工具.</p>
+<p>git add</p>
+<p>git commit</p>
+<p>git push</p>
+<p>採用 Github Classroom 建立作業倉儲的問題:</p>
+<p>2023/09/26 在 1a w3 課程進行到建立各學員 site 作業時發現, 將 Replit 導入 Github 倉儲的流程中, 所產生的系統間權限設定, 必須由 Github Classroom 管理帳號 (以 cp2023 為例, 附屬在 mdecp2023 帳號下), 針對各用戶所提出的個別 Replit 權限 requests (以 site-scrum-1 倉儲為例, 只能透過 Replit 提出控管 mdecp2023/site-scrum-1 倉儲的權限)<span> </span><span>逐一進行設定</span>.</p>
+<p><img alt="" class="add_border" height="310" src="https://mde.tw/cpnote/images/mdecp2023_replit_requests.png" width="400"/></p>
+<p>(上圖顯示共有三名用戶針對 mdecp2023 帳號下的 Github Classroom 倉儲提出 Replit 連線要求, 其中只有最上方用戶的 request 取得 mdecp2023/site-scrum-1 倉儲的維護權限, 其餘兩則 requests 則仍處於待審核階段. 意即若要讓各用戶整合 Replit,<span> </span><span>每一個 Github Classroom 作業, 管理者都必須手動處理超過兩百則的 requests</span>)</p>
+<p>為去除管理者的手動設定負擔, 決定 2023 cp 與 cad 等課程將放棄使用 Github Classroom. 改為由各學員自行針對課程建立用來評分的課程倉儲與網站 (cp 課程建立 cp2023 倉儲, cad 課程則建立 cad2023 倉儲), 直接附屬在學員的 Github 帳號下, 後續的 submodule 設定與倉儲協同權限則統一由各學員自行負責</p><h2>w5</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
 // https://blog.csdn.net/weixin_38468077/article/details/101069365
 // http://www.gnuplot.info/demo/

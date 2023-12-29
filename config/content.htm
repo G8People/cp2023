@@ -60,6 +60,7 @@ int main() {
 }</pre>
 <p><img alt="" height="200" src="/images/gnuplot_ex1.png" width="400"/></p>
 <h2>w6</h2>
+<h3>台灣</h3>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
     // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
     // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
@@ -183,6 +184,7 @@ int main() {
         }
     }</pre>
 <p><img alt="" height="267" src="/images/roc_flag_in_gd.png" width="400"/></p>
+<h3>美國</h3>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">  #include &lt;stdio.h&gt;
   #include &lt;gd.h&gt;
   #include &lt;math.h&gt;
@@ -273,6 +275,7 @@ int main() {
   }
 </pre>
 <p><img alt="" height="211" src="/images/usa_flag.png" width="400"/></p>
+<h3>日本</h3>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -333,6 +336,7 @@ void draw_red_sun(gdImagePtr img, int x, int y, int size, int color) {
     gdImageFillToBorder(img, x, y, color, color);
 }</pre>
 <p><img alt="" height="267" src="/images/japan_flag.png" width="400"/></p>
+<h3>中國</h3>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -416,8 +420,7 @@ void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotatio
     // 使用 gdImageFilledPolygon 绘制星形
     gdImageFilledPolygon(img, points, 10, color);
 }</pre>
-<p><img alt="" height="267" src="/images/china.png" width="400"/></p>
-<h2>w7</h2>
+<p><img alt="" height="267" src="/images/china.png" width="400"/></p><h2>w7</h2>
 <p>EditA: edit all pages, 使用時機為(1)解決多人共用網站時的衝突, 或(2)刪除特定頁面</p>
 <p>Edit: edit one page, 先選頁面, 再選 Edit 然後才能進入編輯模式</p>
 <p>Config: 編輯網站標題, 若要編輯 site title, 必須更改 init.py 中的 site_title 字串內容</p>
