@@ -1,59 +1,43 @@
-#include <stdio.h>
-#include <gd.h>
-#include <math.h>
+void drawPolandFlag(int width, int height, const char *outputPath) {
+    // 建立目標目錄及上層目錄
+    createDestinationDirectory(outputPath);
 
-void draw_japan_flag(gdImagePtr img);
-void draw_red_sun(gdImagePtr img, int x, int y, int size, int color);
+    // 構建目標文件的路徑
+    char destinationPath[256];
+    snprintf(destinationPath, sizeof(destinationPath), "%s/poland_flag.png", outputPath);
 
-int main() {
-    int originalWidth = 1200;
-    int originalHeight = (int)(originalWidth * 2.0 / 3.0);
-    gdImagePtr img = gdImageCreateTrueColor(originalWidth, originalHeight);
-    gdImageAlphaBlending(img, 0);
+    // 將圖像保存為PNG文件
+    gdImagePtr img;
+    FILE *pngout;
+    pngout = fopen(destinationPath, "wb");
 
-    draw_japan_flag(img);
-
-    // 新的宽度和高度以适应 "images" 文件夹
-    int newWidth = 600;
-    int newHeight = (int)(newWidth * 2.0 / 3.0);
-
-    // 创建新图像并进行缩放
-    gdImagePtr resizedImage = gdImageCreateTrueColor(newWidth, newHeight);
-    gdImageAlphaBlending(resizedImage, 0);
-    gdImageCopyResampled(resizedImage, img, 0, 0, 0, 0, newWidth, newHeight, originalWidth, originalHeight);
-
-  FILE *outputFile = fopen("./../images/japan_flag.png", "wb");
-    if (outputFile == NULL) {
+    if (pngout == NULL) {
         fprintf(stderr, "Error opening the output file.\n");
-        return 1;
+        exit(EXIT_FAILURE);
     }
-    gdImagePng(resizedImage, outputFile);
-    fclose(outputFile);
-    gdImageDestroy(img);
-    gdImageDestroy(resizedImage);
 
-    return 0;
-}
+    img = gdImageCreateTrueColor(width, height);
 
-void draw_japan_flag(gdImagePtr img) {
-    int width = gdImageSX(img);
-    int height = gdImageSY(img);
-
-    // 创建一个白色背景
+    // 設置顏色
     int white = gdImageColorAllocate(img, 255, 255, 255);
+    int red = gdImageColorAllocate(img, 255, 0, 0);
+
+    // 繪製白色背景
     gdImageFilledRectangle(img, 0, 0, width - 1, height - 1, white);
 
-    // 绘制红色圆圈（太阳）
-    int red = gdImageColorAllocate(img, 255, 0, 0);
-    int center_x = width / 2;
-    int center_y = height / 2;
-    int radius = (int)((width * 2) / 3);
-    draw_red_sun(img, center_x, center_y, radius, red);
-}
+    // 計算紅條的高度
+    int stripeHeight = height / 2;
 
-void draw_red_sun(gdImagePtr img, int x, int y, int size, int color) {
-  // 減小 size 的值,例如將他的值減半
-  size = size / 2;
-    gdImageArc(img, x, y, size, size, 0, 360, color);
-    gdImageFillToBorder(img, x, y, color, color);
+    // 繪製兩個紅條
+    gdImageFilledRectangle(img, 0, 0, width - 1, stripeHeight - 1, red);
+    gdImageFilledRectangle(img, 0, height / 2, width - 1, height - 1, red);
+
+    // 將圖像保存為PNG文件
+    gdImagePng(img, pngout);
+    fclose(pngout);
+
+    // 釋放內存
+    gdImageDestroy(img);
+
+    printf("國旗已成功繪製並搬移到目標目錄：%s\n", destinationPath);
 }
