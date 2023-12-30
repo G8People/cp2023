@@ -142,52 +142,26 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w1-w4 << <a href='w1-w4.html'>Previous</a> <a href='w6.html'>Next</a> >> w6<br /><h1>w5</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 包含標準輸出入程式庫的標頭文件
-// https://blog.csdn.net/weixin_38468077/article/details/101069365
-// http://www.gnuplot.info/demo/
-// https://github.com/sysprog21/rv32emu
-// https://github.com/sysprog21/semu 
-// https://docs.google.com/presentation/d/14N0cWG2SnBSqhc2cLF0_2VerB9FF8JN3
-// https://cs61c.org/fa23/
-// https://greenteapress.com/wp/think-python-2e/
-// https://github.com/ecalvadi/c99-examples
-// https://github.com/gouravthakur39/beginners-C-program-examples
-// https://github.com/ergenekonyigit/Numerical-Analysis-Examples
-// https://www.che.ncku.edu.tw/facultyweb/changct/html/teaching/CPPandMATLAB/Past/pdf%20Files/Chap02-Ling.pdf
-// https://gteceducation.com.sg/Brochures/PROGRAMMING/C%20PROGRAMMING%20FULL.pdf
-// https://jsommers.github.io/cbook/cbook.pdf
-// https://jsommers.github.io/cbook/index.html
-// http://student.itee.uq.edu.au/courses/csse2310/CProgrammingNotes.pdf
-// http://cslibrary.stanford.edu/101/EssentialC.pdf
-// https://publications.gbdirect.co.uk/c_book/
-// https://www.fossil-scm.org/fossil-book/doc/2ndEdition/fossilbook.pdf
-// ***** execute on replit 
-// cd downloads
-// cc gnuplot_ex1.c -o gnuplot_ex1
-// ./gnuplot_ex1
-#include &lt;stdio.h&gt;
+    <div id="tipue_search_content">ANSIC << <a href='ANSIC.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>1.</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 
-// 主函式
-int main() {
-    // Start a Gnuplot process using popen
-    FILE *gnuplotPipe = popen("gnuplot -persistent", "w");
-    if (!gnuplotPipe) {
-        fprintf(stderr, "Failed to start Gnuplot.\n");
-        return 1;
-    }
+int main(int argc, char** argv) {
+    // Check for C standard version
+    #if __STDC_VERSION__ &gt;=  201710L
+        printf("We are using C18!\n");
+    #elif __STDC_VERSION__ &gt;= 201112L
+        printf("We are using C11!\n");
+    #elif __STDC_VERSION__ &gt;= 199901L
+        printf("We are using C99!\n");
+    #else
+        printf("We are using C89/C90!\n");
+    #endif
 
-    // Use Gnuplot plotting commands, specify font and output as PNG
-    fprintf(gnuplotPipe, "set terminal png font 'default,10' size 800,400\n");
-    fprintf(gnuplotPipe, "set output './../images/gnuplot_ex1.png'\n");
-    fprintf(gnuplotPipe, "plot sin(x)");
-    // Close popen
-    pclose(gnuplotPipe);
-
+    // Indicate successful execution
     return 0;
 }</pre>
-<p><img alt="" height="200" src="./../images/gnuplot_ex1.png" width="400"/></p>
-<br />w1-w4 << <a href='w1-w4.html'>Previous</a> <a href='w6.html'>Next</a> >> w6</div>
+<p><img alt="" height="118" src="./../images/4.png" width="403"/></p>
+<p></p><br />ANSIC << <a href='ANSIC.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
