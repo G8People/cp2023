@@ -68,8 +68,8 @@ void drawPolandFlag(int width, int height, const char *outputPath) {
 }
 
 int main() {
-    int width = 16;   // 設置寬度
-    int height = 10;  // 設置高度
+    int width = 600;   // 設置寬度
+    int height = 400;  // 設置高度
 
     // 替換成實際的目錄路徑
     const char *outputPath = "./../images/";
