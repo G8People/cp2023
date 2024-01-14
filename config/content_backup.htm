@@ -650,6 +650,89 @@ int main() {
 }
 </pre>
 <p><img alt="" height="250" src="/images/poland_flag.png" width="400"/></p>
+<h3>烏克蘭</h3>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+#define WIDTH 600
+#define HEIGHT 400
+
+#define YELLOW 0xFFD100 // Yellow color
+#define BLUE 0x0057A6   // Blue color
+
+void drawUkraineFlag(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int yellowIndex, blueIndex;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate colors
+    yellowIndex = gdImageColorAllocate(im, (YELLOW &gt;&gt; 16) &amp; 0xFF, (YELLOW &gt;&gt; 8) &amp; 0xFF, YELLOW &amp; 0xFF);
+    blueIndex = gdImageColorAllocate(im, (BLUE &gt;&gt; 16) &amp; 0xFF, (BLUE &gt;&gt; 8) &amp; 0xFF, BLUE &amp; 0xFF);
+
+    // Draw flag
+    gdImageFilledRectangle(im, 0, 0, WIDTH, HEIGHT, yellowIndex);
+    gdImageFilledRectangle(im, 0, HEIGHT / 2, WIDTH, HEIGHT, blueIndex);
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+void drawCircle(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int whiteIndex;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate color
+    whiteIndex = gdImageColorAllocate(im, 255, 255, 255);
+
+    // Draw circle
+    gdImageFilledEllipse(im, WIDTH / 2, HEIGHT / 2, WIDTH / 2, HEIGHT / 2, whiteIndex);
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+void drawSineWave(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int redIndex;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate color
+    redIndex = gdImageColorAllocate(im, 255, 0, 0);
+
+    // Draw sine wave
+    for (int x = 0; x &lt; WIDTH; x++) {
+        int y = HEIGHT / 2 + HEIGHT / 4 * sin(2 * M_PI * x / WIDTH);
+        gdImageSetPixel(im, x, y, redIndex);
+    }
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+int main() {
+    drawUkraineFlag("ukraine_flag.png");
+    drawCircle("circle.png");
+    drawSineWave("sine_wave.png");
+    return 0;
+}
+</pre>
 <p></p>
 <h2>w7</h2>
 <p>EditA: edit all pages, 使用時機為(1)解決多人共用網站時的衝突, 或(2)刪除特定頁面</p>
@@ -855,7 +938,8 @@ int main() {
 <p>數學運算&lt;math.h&gt;</p>
 <p>輸入與輸出處理&lt;stdio.h&gt;</p>
 <p>記憶體管理&lt;stdlib.h&gt;</p>
-<p>if(表示句){程式片段} 若表示句成立，就可以執行程式片段</p><h1>note</h1>
+<p>if(表示句){程式片段} 若表示句成立，就可以執行程式片段</p>
+<h1>note</h1>
 <h2>ssh</h2>
 <h4>下載putty</h4>
 <p>在putty資料夾內開啟puttygen.exe做一把金鑰匙</p>
