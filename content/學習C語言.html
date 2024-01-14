@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,148 +142,34 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">中國 << <a href='中國.html'>Previous</a> <a href='波蘭.html'>Next</a> >> 波蘭<br /><h1>英國</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-#include &lt;gd.h&gt;
-#include &lt;math.h&gt;
-
-void draw_uk_flag(gdImagePtr img);
-void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);
-
-int main() {
-    // 设置国旗的宽和高
-    int width = 1200;
-    int height = width / 2;
-
-    // 创建图像
-    gdImagePtr img = gdImageCreateTrueColor(width, height);
-    gdImageAlphaBlending(img, 0);
-
-    // 绘制英国国旗
-    draw_uk_flag(img);
-
-    // 将图像保存到文件
-    FILE *outputFile = fopen("./../images/uk.png", "wb");
-    if (outputFile == NULL) {
-        fprintf(stderr, "打开输出文件时发生错误。\n");
-        return 1;
-    }
-    gdImagePngEx(img, outputFile, 9);
-    fclose(outputFile);
-    gdImageDestroy(img);
-    return 0;
-}
-
-
-
-void draw_uk_flag(gdImagePtr img) {
-    int width = gdImageSX(img);
-    int height = gdImageSY(img);
-
-    int red, white, blue;
-    red = gdImageColorAllocate(img, 204, 0, 0);       // 红色
-    white = gdImageColorAllocate(img, 255, 255, 255); // 白色
-    blue = gdImageColorAllocate(img, 0, 0, 153);      // 蓝色
-
-    gdImageFilledRectangle(img, 0, 0, width, height, blue);
-
-
-  int x1, y1, x2, y2, x3, y3;
-  {
-    int line_thickness = 100;
-    gdImageSetThickness(img, line_thickness);
-
-    int x1, y1, x2, y2, x3, y3;
-
-    // 绘制白色斜线
-    x1 = 0;
-    y1 = 600;
-    x2 = 1200;
-    y2 = 0;
-    gdImageLine(img, x1, y1, x2, y2, white);
-
-    x1 = 0;
-    y1 = 0;
-    x2 = 1200;
-    y2 = 600;
-    gdImageLine(img, x1, y1, x2, y2, white);
-}
-  {
-    int line_thickness = 33;
-    gdImageSetThickness(img, line_thickness);
-
-
-    // 绘制红色斜线
-    x1 = 566;
-    y1 = 300;
-    x2 = 1166;
-    y2 = 0;
-    gdImageLine(img, x1, y1, x2, y2, red);
-
-    x1 = 1233;
-    y1 = 600;
-    x2 = 633;
-    y2 = 300;
-    gdImageLine(img, x1, y1, x2, y2, red);
-
-    x1 = 566;
-    y1 = 300;
-    x2 = -33;
-    y2 = 0;
-    gdImageLine(img, x1, y1, x2, y2, red);
-
-    x1 = 600;
-    y1 = 316.5;
-    x2 = 0;
-    y2 = 616.5;
-    gdImageLine(img, x1, y1, x2, y2, red);
-  }
-  {
-  int line_thickness = 33;
-  gdImageSetThickness(img, line_thickness);
-
-  int x1, y1, x2, y2, x3, y3;
-
-  // 绘制  斜线
-  x1 = 0;
-  y1 = 600;
-  x2 = 1200;
-  y2 = 0;
-  gdImageLine(img, x1, y1, x2, y2, red );
-
-
-  x1 = 1200;
-    y1 = 16.5;
-    x2 = 600;
-    y2 = 316.5;
-    gdImageLine(img, x1, y1, x2, y2, white);
-
-
-  x1 = 0;
-    y1 = 583.5;
-    x2 = 600;
-    y2 = 283.5;
-    gdImageLine(img, x1, y1, x2, y2, white);
-
-
-  }
-
-    // 绘制白色十字
-    int cross_width = width / 32;
-    int cross_arm_width = width / 32;
-    int center_x = width / 2;
-    int center_y = height / 2;
-
-    gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);
-    gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);
-
-    // 绘制红色十字
-    gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);
-    gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);
-}
-</pre>
-<p><img alt="" height="200" src="./../images/uk.png" width="400"/></p>
-<br />中國 << <a href='中國.html'>Previous</a> <a href='波蘭.html'>Next</a> >> 波蘭</div>
+    <div id="tipue_search_content">w15 << <a href='w15.html'>Previous</a> <a href='note.html'>Next</a> >> note<br /><h1>學習C語言</h1>
+<p><img alt="" height="126" src="https://41223136.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-01-08%20211748.png" width="400"/></p>
+<p> #include是讓編譯器去找你想要的檔案，加入這個指令，他就會把檔案內容加入到程式碼裡面。</p>
+<p> stdio.h是c語言的內建檔案內容</p>
+<p>標頭檔.h為副檔名</p>
+<p>int(integer)為整數</p>
+<p>main是c語言程式的開頭位置、起點</p>
+<p>printf是個內建函式，功能是將字串印在螢幕上，從標準輸出<span>輸出</span></p>
+<p>return的指令是回傳一個結果，0代表程式成功執行完畢</p>
+<p>\n表示換行字元</p>
+<p>;代表語句結束符號，每當完成一句c語言都應該要使用分號來標記語句的結束</p>
+<p><img alt="" height="307" src="https://41223136.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-01-08%20213749.png" width="400"/></p>
+<p><img alt="" height="169" src="https://41223136.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-01-08%20215214.png" width="400"/></p>
+<p>scanf是標準輸入的一個內建函式(從鍵盤輸入的文字)</p>
+<p>%d表示十位數整數</p>
+<p>&amp;是取址運算子，取得位址的意思， 存取&amp;integer1的位置</p>
+<p>=如果是變數右邊的值就會給左邊，若左邊的數字不是變數，就是語法錯誤</p>
+<p>ex:</p>
+<p>3==5的意思是看這兩個數字有沒有一樣，如果一樣就會得到1，如果不一樣就會得到0的結果</p>
+<p>3=5左邊的數字不是變數，語法就會錯誤，如果左邊數字為變數，右邊的值就會給左邊</p>
+<p>void作為回傳值型態時，表示該函式不回傳任何值</p>
+<p>當回傳值型態是void時，return可以省略</p>
+<p>程式庫:</p>
+<p>字串處理&lt;string.h&gt;</p>
+<p>數學運算&lt;math.h&gt;</p>
+<p>輸入與輸出處理&lt;stdio.h&gt;</p>
+<p>記憶體管理&lt;stdlib.h&gt;</p>
+<p>if(表示句){程式片段} 若表示句成立，就可以執行程式片段</p><br />w15 << <a href='w15.html'>Previous</a> <a href='note.html'>Next</a> >> note</div>
         
     <!-- footer -->
       <div class="container">
