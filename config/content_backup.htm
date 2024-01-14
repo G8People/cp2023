@@ -733,7 +733,49 @@ int main() {
     return 0;
 }
 </pre>
-<p><img alt="" height="267" src="/images/ukraine_flag.png" width="400"/></p><h2>w7</h2>
+<p><img alt="" height="267" src="/images/ukraine_flag.png" width="400"/></p>
+<h3>法國</h3>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+
+#define WIDTH 900
+#define HEIGHT 600
+#define BLUE 0x0055A4   // Blue color
+#define WHITE 0xFFFFFF  // White color
+#define RED 0xEF3340    // Red color
+
+void drawFranceFlag(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int blueIndex, whiteIndex, redIndex;
+
+    im = gdImageCreateTrueColor(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate colors
+    blueIndex = gdImageColorAllocate(im, (BLUE &gt;&gt; 16) &amp; 0xFF, (BLUE &gt;&gt; 8) &amp; 0xFF, BLUE &amp; 0xFF);
+    whiteIndex = gdImageColorAllocate(im, (WHITE &gt;&gt; 16) &amp; 0xFF, (WHITE &gt;&gt; 8) &amp; 0xFF, WHITE &amp; 0xFF);
+    redIndex = gdImageColorAllocate(im, (RED &gt;&gt; 16) &amp; 0xFF, (RED &gt;&gt; 8) &amp; 0xFF, RED &amp; 0xFF);
+
+    // Draw flag
+    int stripeWidth = WIDTH / 3;
+
+    gdImageFilledRectangle(im, 0, 0, stripeWidth, HEIGHT, blueIndex);
+    gdImageFilledRectangle(im, stripeWidth, 0, 2 * stripeWidth, HEIGHT, whiteIndex);
+    gdImageFilledRectangle(im, 2 * stripeWidth, 0, WIDTH, HEIGHT, redIndex);
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+int main() {
+    drawFranceFlag("france_flag.png");
+    return 0;
+}
+</pre>
+<h2>w7</h2>
 <p>EditA: edit all pages, 使用時機為(1)解決多人共用網站時的衝突, 或(2)刪除特定頁面</p>
 <p>Edit: edit one page, 先選頁面, 再選 Edit 然後才能進入編輯模式</p>
 <p>Config: 編輯網站標題, 若要編輯 site title, 必須更改 init.py 中的 site_title 字串內容</p>
