@@ -567,6 +567,88 @@ void draw_uk_flag(gdImagePtr img) {
 </pre>
 <p><img alt="" height="200" src="/images/uk.png" width="400"/></p>
 <h3>波蘭</h3>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;string.h&gt;
+
+void createDestinationDirectory(const char *path) {
+    struct stat st = {0};
+
+    // 檢查目錄是否存在
+    if (stat(path, &amp;st) == -1) {
+        // 如果目錄不存在，則創建目錄
+        int status = mkdir(path, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+        if (status == 0) {
+            printf("目錄已成功建立：%s\n", path);
+        } else {
+            fprintf(stderr, "建立目錄時發生錯誤：%s\n", strerror(errno));
+            exit(EXIT_FAILURE);
+        }
+    } else {
+        printf("目錄已存在：%s\n", path);
+    }
+}
+
+void drawPolandFlag(int width, int height, const char *outputPath) {
+    // 建立目標目錄及上層目錄
+    createDestinationDirectory(outputPath);
+
+    // 構建目標文件的路徑
+    char destinationPath[256];
+    snprintf(destinationPath, sizeof(destinationPath), "%s/poland_flag.png", outputPath);
+
+    // 將圖像保存為PNG文件
+    FILE *pngout;
+    pngout = fopen(destinationPath, "wb");
+
+    if (pngout == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    gdImagePtr img;
+    img = gdImageCreateTrueColor(width, height);
+
+    // 設置顏色
+    int white = gdImageColorAllocate(img, 255, 255, 255);
+    int red = gdImageColorAllocate(img, 255, 0, 0);
+
+    // 繪製白色背景
+    gdImageFilledRectangle(img, 0, 0, width - 1, height - 1, white);
+
+    // 計算紅條的高度
+    int stripeHeight = height / 2;
+
+    // 繪製紅色條紋
+    gdImageFilledRectangle(img, 0, stripeHeight, width - 1, height - 1, red);
+
+    // 將圖像保存為PNG文件
+    gdImagePng(img, pngout);
+    fclose(pngout);
+
+    // 釋放內存
+    gdImageDestroy(img);
+
+    printf("波蘭國旗已成功繪製並搬移到目標目錄：%s\n", destinationPath);
+}
+
+int main() {
+    int width = 600;   // 設置寬度
+    int height = 400;  // 設置高度
+
+    // 替換成實際的目錄路徑
+    const char *outputPath = "./../images/";
+
+    // 繪製國旗
+    drawPolandFlag(width, height, outputPath);
+
+    return 0;
+}
+</pre>
 <p><img alt="" height="250" src="/images/poland_flag.png" width="400"/></p>
 <p></p>
 <h2>w7</h2>
@@ -743,11 +825,12 @@ int main() {
 }</pre>
 <p><img alt="" height="300" src="/images/gd.png" width="400"/></p>
 <h2>w13</h2>
-<p>始終不太懂到底要幹嘛，都會一直落後，只能一直去請教同學，以後會繼續向其他人求助，抱持著虛心求助的心態，還記得老師說要帶著我們一步一步爬，從那時候我就有認真學習的動力，從建立環境，到近端，都是一步一步的向上爬，雖然說還是還是一直會有問題，但透過同學的教導，也漸漸的上手，我覺得最有成就感的還是畫國旗，就是一直在跟ChatGTP斡旋，然後國旗畫出來得那一刻，前所未有的成就感，那都是非常有趣的，但就是很耗時間，一不小心3-4個小時就過去了。</p>
+<p>始終不太懂到底要幹嘛，都會一直落後，只能一直去請教同學，以後會繼續向其他人求助，抱持著虛心求助的心態，還記得老師說要帶著我們一步一步爬，從那時候我就有認真學習的動力，從建立環境，到近端，都是一步一步的向上爬，雖然說還是還是一直會有問題，但透過同學的教導，也漸漸的上手，我覺得最有成就感的還是畫國旗，就是一直在跟ChatGTP斡旋，然後國旗畫出來得那一刻，前所未有的成就感，那都是非常有趣的，但就是很耗時間，一不小心3-4個小時就過去了，希望這學期不會被犧牲掉。</p>
 <h2>w15</h2>
 <p><img alt="" height="320" src="/images/412231231.png" width="600"/></p>
+<h1>學習C語言</h1>
 <h1>note</h1>
-<h2>ssh</h2>
+<h1>ssh</h1>
 <p>下載putty</p>
 <p>在putty資料夾內開啟puttygen.exe做一把金鑰匙</p>
 <p>將key儲存在github帳號內(開啟設定點選ssh)</p>
@@ -905,7 +988,7 @@ int main() {
 
    return(0);
 }</pre>
-<br/><img alt="" height="74" src="/images/6.png" width="400"/><br/><br/>Brython
+<p><br/><img alt="" height="74" src="/images/6.png" width="400"/><br/><br/>Brython</p>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
