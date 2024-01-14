@@ -1,35 +1,81 @@
 #include <stdio.h>
 #include <gd.h>
+#include <math.h>
 
 #define WIDTH 600
 #define HEIGHT 400
-#define YELLOW 0xFFD100  // Yellow color
-#define BLUE 0x0057A6    // Blue color
 
-void drawUkraineFlag() {
-gdImagePtr im;
-FILE *output;
+#define YELLOW 0xFFD100 // Yellow color
+#define BLUE 0x0057A6   // Blue color
 
-im = gdImageCreateTrueColor(WIDTH, HEIGHT);
-output = fopen("ukraine_flag.png", "wb");
+void drawUkraineFlag(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int yellowIndex, blueIndex;
 
-// Allocate yellow and blue colors
-int yellowIndex = gdImageColorAllocate(im, (YELLOW >> 16) & 0xFF, (YELLOW >> 8) & 0xFF, YELLOW & 0xFF);
-int blueIndex = gdImageColorAllocate(im, (BLUE >> 16) & 0xFF, (BLUE >> 8) & 0xFF, BLUE & 0xFF);
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
 
-// Draw blue upper half
-gdImageFilledRectangle(im, 0, 0, WIDTH - 1, HEIGHT / 2 - 1, blueIndex);
+    // Allocate colors
+    yellowIndex = gdImageColorAllocate(im, (YELLOW >> 16) & 0xFF, (YELLOW >> 8) & 0xFF, YELLOW & 0xFF);
+    blueIndex = gdImageColorAllocate(im, (BLUE >> 16) & 0xFF, (BLUE >> 8) & 0xFF, BLUE & 0xFF);
 
-// Draw yellow lower half
-gdImageFilledRectangle(im, 0, HEIGHT / 2, WIDTH - 1, HEIGHT - 1, yellowIndex);
+    // Draw flag
+    gdImageFilledRectangle(im, 0, 0, WIDTH, HEIGHT, yellowIndex);
+    gdImageFilledRectangle(im, 0, HEIGHT / 2, WIDTH, HEIGHT, blueIndex);
 
-// Save the image
-gdImagePng(im, output);
-fclose(output);
-gdImageDestroy(im);
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+void drawCircle(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int whiteIndex;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate color
+    whiteIndex = gdImageColorAllocate(im, 255, 255, 255);
+
+    // Draw circle
+    gdImageFilledEllipse(im, WIDTH / 2, HEIGHT / 2, WIDTH / 2, HEIGHT / 2, whiteIndex);
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
+}
+
+void drawSineWave(const char *outputFile) {
+    gdImagePtr im;
+    FILE *pngout;
+    int redIndex;
+
+    im = gdImageCreate(WIDTH, HEIGHT);
+    pngout = fopen(outputFile, "wb");
+
+    // Allocate color
+    redIndex = gdImageColorAllocate(im, 255, 0, 0);
+
+    // Draw sine wave
+    for (int x = 0; x < WIDTH; x++) {
+        int y = HEIGHT / 2 + HEIGHT / 4 * sin(2 * M_PI * x / WIDTH);
+        gdImageSetPixel(im, x, y, redIndex);
+    }
+
+    // Save image
+    gdImagePng(im, pngout);
+    fclose(pngout);
+    gdImageDestroy(im);
 }
 
 int main() {
-drawUkraineFlag();
-return 0;
+    drawUkraineFlag("ukraine_flag.png");
+    drawCircle("circle.png");
+    drawSineWave("sine_wave.png");
+    return 0;
 }
